@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to My Valentine's Surprise</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* Flower Background */
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/flowers.jpg') no-repeat center center fixed;
+            background-size: cover;
+            z-index: 1; /* Background is behind the content */
+        }
+
+        /* Container for Content */
+        .container {
+            position: relative;
+            z-index: 2; /* Ensure content is above the background */
+            text-align: center;
+            padding-top: 20%;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #fbff00; /* Pink */
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #00d9ff;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            background-color: #5263ff;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #ff80ab; /* Lighter pink */
+        }
+
+        /* Falling Hearts and Stars */
+        .falling {
+            position: absolute;
+            top: -50px;
+            font-size: 24px;
+            color: #ff4081; /* Pink for hearts */
+            animation: fall linear infinite;
+            z-index: 3; /* Falling elements are above the background and content */
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Stars */
+        .star {
+            color: gold; /* Gold for stars */
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Flower Background -->
+    <div class="background"></div>
+
+    <!-- Falling Hearts and Stars -->
+    <div id="fallingElements"></div>
+
+    <!-- Content -->
+    <div class="container">
+        <h1>♡Hey Achu♡</h1>
+        <p>♡kinda made something for you. its goofy as fuck but i hope you like it :D ♡</p>
+        <button class="button" onclick="window.location.href='valentine.html'">click this to get rick-rolled</button>
+    </div>
+
+    <!-- Background Song -->
+    <audio autoplay loop>
+        <source src="blue.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+
+    <!-- Script for Falling Hearts and Stars -->
+    <script>
+        // Function to create falling elements (hearts and stars)
+        function createFallingElements() {
+            const fallingContainer = document.getElementById('fallingElements');
+            const numElements = 5000; // Number of falling elements
+
+            for (let i = 0; i < numElements; i++) {
+                const element = document.createElement('div');
+                element.classList.add('falling');
+                element.innerHTML = Math.random() > .4 ? '❤️' : '⭐'; // Randomly choose heart or star
+                if (element.innerHTML === '⭐') {
+                    element.classList.add('star'); // Add star class for gold color
+                }
+                element.style.left = `${Math.random() * 10000}vw`; // Random horizontal position
+                element.style.animationDuration = `${Math.random() * 1 + 1}s`; // Random speed
+                element.style.animationDelay = `${Math.random() * .5}s`; // Random delay
+                fallingContainer.appendChild(element);
+            }
+        }
+
+        // Create falling elements when the page loads
+        createFallingElements();
+
+        
+    </script>
+</body>
+</html>         

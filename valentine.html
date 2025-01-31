@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fce4ec; /* Pink background */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #ff80ab; /* Lighter pink */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+        }
+        .section {
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .letter {
+            background-color: #fff;
+            padding: 30px;
+            margin-top: 40px;
+            border-radius: 8px;
+            width: 80%;
+            margin: 0 auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .letter h2 {
+            font-size: 2rem;
+            color: #ff4081; /* Pink */
+        }
+        .letter p {
+            font-size: 1.2rem;
+            color: #333;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+        .question {
+            margin-top: 40px;
+            font-size: 1.5rem;
+            color: #ff4081; /* Pink */
+        }
+        .options {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .option {
+            background-color: #fff;
+            padding: 15px 30px;
+            border: 2px solid #ff4081;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        .unchoosable {
+            background-color: #ddd;
+            cursor: not-allowed;
+        }
+        .image-section {
+            margin-top: 80px;
+        }
+        .image-section img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .gallery {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(500px, 4fr)); /* Adjust column size */
+            gap: 10px; /* Space between images */
+            margin-top: 40px;
+            padding: 40px;
+        }
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* Ensures images fill the container */
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        .countdown {
+            font-size: 1.5rem;
+            color: #ff4081;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Will You Be My Valentine?</h1>
+    </header>
+
+    <!-- Letter Section -->
+    <div class="letter">
+        <img src="images/5.jpg" alt="Our first selfie together" style="width: 100%; max-width: 500px; border-radius: 8px; margin-bottom: 20px;" />
+        <h2>My Dearest Akshattha,</h2>
+        <p>
+            Honestly makes sense I make a website dedicated to you, doesn’t it? Because it’s a URL, and u r all I want.(smooth innit?) <br>
+
+
+            If smiles were a form of currency, you’d be a billionaire, and I’d never stop hopelessly trying to make you earn more so I can steal some for myself. <br>
+            
+            I love looking into your eyes, and you make me nervous when you look into mine.<br>
+
+            Also, im sorry all our pictures have me smiling like a roblox avatar, you make me genuinely smile but i got camera shy. <br>
+            
+            I’m pretty sure the universe saw me struggling and thought, “Alright, let’s help this guy out,” and sent you. On a sadder note (because I ruin everything), as I told you, statistically, first relationships usually dont last. But if I ever had to seek someone else, she would have to be part-angel, part-funniest human alive, and part sorceress just to come close to you.<br>
+            
+            I’m struggling to find a conclusion, so I’m just going to summarize the things I already said: I love your smile, your eyes, and the fact that you manage to tolerate me.<br>
+            
+            <br>With love,<br>
+            Your hopelessly smitten boyfriend,<br>
+            Suriya
+            
+            
+        </p>
+    </div>
+
+    <!-- Valentine Question -->
+    <div class="section">
+        <p class="question">Akshattha, will you make me the happiest guy on the planet and be my Valentine?</p>
+        <div class="options">
+            <div class="option" id="yesOption">YES MY TALL HANDSOME HUNK OF A BOYFRIEND</div>
+            <div class="option unchoosable" id="humbleOption">no(i'd like to see you try)</div>
+        </div>
+    </div>
+
+    <!-- Countdown Timer -->
+    <div class="countdown" id="countdown"></div>
+
+    <!-- Photo Gallery -->
+    <div class="gallery">
+        <div class="gallery-item large">
+            <img src="images/2.jpg" alt="" />
+        </div>
+        <div class="gallery-item">
+            <img src="images/4.jpg" alt="" />
+        </div>
+        <div class="gallery-item">
+            <img src="images/5.jpg" alt="" />
+        </div>
+        <div class="gallery-item large">
+            <img src="images/6.jpg" alt="" />
+        </div>
+        <div class="gallery-item">
+            <img src="images/8.jpg" alt="" />
+        </div>
+        <div class="gallery-item large">
+            <img src="images/3.jpg" alt="" />
+        
+    </div>
+     
+
+    <!-- Confetti Script -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <script>
+        // Confetti on "YES" click
+        const yesOption = document.getElementById('yesOption');
+        yesOption.addEventListener('click', function() {
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { y: 0.6 }
+            });
+            alert('SHE SAID YES!!!! ❤️');
+        });
+
+        // Move the "humble" option on hover
+        const humbleOption = document.getElementById('humbleOption');
+        humbleOption.addEventListener('mouseover', function() {
+            const randomX = Math.floor(Math.random() * 500) - 200; // Random X offset
+            const randomY = Math.floor(Math.random() * 500) - 200; // Random Y offset
+            humbleOption.style.transform = `translate(${randomX}px, ${randomY}px)`;
+        });
+
+        
+    </script>
+</body>
+</html>
